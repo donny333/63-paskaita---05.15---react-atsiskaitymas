@@ -29,7 +29,7 @@ const Home = () => {
                 posts.lengh === 0 ? 
                 <h1>Page is loading.</h1> :
                 <>
-                    <h1>Our all posts</h1>
+                    <h1>Whispers</h1>
                     <div>
                         {
                             posts.map(post =>{

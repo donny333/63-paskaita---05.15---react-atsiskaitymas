@@ -17,21 +17,21 @@ const App = () => {
     <>
     <Header />
 
-    <Routes>
-      {
+    {
       currentUser ?
-      <Route path='/' element={<Home />} /> :
-      <Route path='/' element={<Login />} />
-      }
-      {
-      currentUser ?
-      <Route path='/add-post' element={<AddPost />} /> :
-      <Route path='/add-post' element={<Login />} />
-      }
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
-    </Routes>
-
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/add-post' element={<AddPost />} />
+        <Route path='/login' element={<Home />} />
+        <Route path='/register' element={<Home />} />
+      </Routes> :
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/add-post' element={<Login />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
+    }
     <Footer />
     </>
   );

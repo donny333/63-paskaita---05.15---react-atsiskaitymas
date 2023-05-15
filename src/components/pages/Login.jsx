@@ -61,7 +61,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [failedLogin, setFailedLogin] = useState(false);
-    const {users, currentUser, setCurrentUser} = useContext(UsersContext);
+    const {users, setCurrentUser} = useContext(UsersContext);
 
     let values = {
         email: '',
