@@ -919,6 +919,15 @@
       "userId": 11,
       "id": "b7087130-fded-4e69-9e0d-aa778ce3b43f",
       "date": "2023-5-15"
+    },
+    {
+      "postText": "Hallo hallo, I missed you all.",
+      "tags": [
+        "love"
+      ],
+      "userId": "792e6978-77e1-4a73-800c-8cb019e4e49d",
+      "id": "aa2de02a-e14a-40e1-b013-b489231e4976",
+      "date": "2023-5-15"
     }
   ],
   "users": [
@@ -998,6 +1007,20 @@
       "email": "d.baguzis@gmail.com",
       "gender": "Female",
       "password": "123"
+    },
+    {
+      "userName": "Rox",
+      "email": "r@r.lt",
+      "gender": "male",
+      "password": "Rokas123!",
+      "id": "929a4fb9-ca36-44b4-a0e9-916d07984379"
+    },
+    {
+      "userName": "Donce",
+      "email": "d.baguzis@gmail.com",
+      "gender": "male",
+      "password": "Donce123!",
+      "id": "792e6978-77e1-4a73-800c-8cb019e4e49d"
     }
   ]
 }

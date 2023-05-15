@@ -14,6 +14,15 @@ const reducer = (state, action) => {
     switch(action.type){
         case usersActionTypes.load:
             return action.data
+        case usersActionTypes.add:
+            fetch("http://localhost:8000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(action.data)
+            })
+            return [...state, action.data]
         default:
             return state
     }
@@ -40,7 +49,9 @@ const Users = ({ children }) => {
             value={{
                 users,
                 currentUser,
-                setCurrentUser
+                setCurrentUser,
+                setUsers,
+                usersActionTypes
             }}
         >
             { children }

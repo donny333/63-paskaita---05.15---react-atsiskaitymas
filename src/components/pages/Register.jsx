@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import * as Yup from 'yup';
 import { useFormik } from 'formik'
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { v4 as generateId } from "uuid";
+import UsersContext from "../../contexts/UsersContext";
+import { useNavigate } from "react-router-dom";
+
 
 const StyledMain = styled.main`
     min-height: calc(100vh - 100px - 75px);
@@ -101,6 +105,9 @@ let userShema = Yup.object({
 });
 
 const Register = () => {
+    const navigate = useNavigate()
+    const [genderSelected, setGenderSelected] = useState(true);
+    const {setUsers, usersActionTypes, setCurrentUser} = useContext(UsersContext);
 
     const formik = useFormik({
         initialValues:values,
@@ -108,15 +115,24 @@ const Register = () => {
         onSubmit: (values) => {
             if(values.gender){
                 console.log(values)
-                setGenderSelected(true)
+                const newUser = {
+                    ...values,
+                    id:generateId()
+                }
+                delete newUser.repeatPassword
+                setUsers({
+                    type: usersActionTypes.add,
+                    data: newUser
+                });
+                setGenderSelected(true);
+                setCurrentUser(newUser);
+                navigate('/')
+
             } else{
                 setGenderSelected(false)
             }
         }
     })
-
-    const [genderSelected, setGenderSelected] = useState(true);
-
     return (  
         <StyledMain>
                 <form onSubmit={formik.handleSubmit}>

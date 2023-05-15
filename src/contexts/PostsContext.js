@@ -14,7 +14,6 @@ const reducer = (state, action) =>{
         case postsActionTypes.load:
             return action.data;
         case postsActionTypes.add:
-            // console.log(action.data)
             fetch("http://localhost:8000/posts", {
                 method: "POST",
                 headers: {
