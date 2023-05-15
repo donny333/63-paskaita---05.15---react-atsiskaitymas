@@ -83,12 +83,10 @@ const Login = () => {
                 setFailedLogin(!failedLogin)
             } else {
                 setCurrentUser(validUser);
-                navigate('/home')
+                navigate('/')
             }
         }
     });
-
-    console.log(currentUser)
 
     return ( 
         <StyledMain>

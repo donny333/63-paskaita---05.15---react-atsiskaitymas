@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UsersContext from "../../contexts/UsersContext";
 
 const StyledHeader = styled.header`
     display: flex;
@@ -23,15 +25,25 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
+
+    const {currentUser} = useContext(UsersContext);
+    console.log(currentUser)
+
     return ( 
         <StyledHeader>
             <img src="https://media.discordapp.net/attachments/1101880155149967370/1107562523965804554/donny333_a_logo_for_a_webpage_where_people_posts_their_short_mi_355c4856-f0a9-4b5a-acab-775615ba0104.png?width=1138&height=1138" alt="logo" />
-            <ul>
-                <li><Link to={'/login'}>Login</Link></li>
-                <li><Link to={'/register'}>Register</Link></li>
-                <li><Link to={'/home'}>Home</Link></li>
-                {/* <li><Link to={'/post'}>Post</Link></li> */}
-            </ul>
+            {
+                !currentUser ? 
+                <ul>
+                    <li><Link to={'/login'}>Login</Link></li>
+                    <li><Link to={'/register'}>Register</Link></li>
+                </ul>:
+                <ul>
+                    <li><Link to={'/home'}>Home</Link></li>
+                    <li><Link to={'/add-post'}>Add Post</Link></li>
+                </ul>
+
+            }
         </StyledHeader>
      );
 }
