@@ -6,7 +6,8 @@ import { createContext } from "react";
 const UsersContext = createContext();
 
 const usersActionTypes = {
-    load: 'load_all_users'
+    load: 'load_all_users',
+    add: 'add_new_user'
 }
 
 const reducer = (state, action) => {
