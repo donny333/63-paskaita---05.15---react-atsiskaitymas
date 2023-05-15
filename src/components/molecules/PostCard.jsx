@@ -36,11 +36,11 @@ const StyledDiv = styled.div`
     }
 `;
 
-const PostCard = ({post}) => {
+const PostCard = ({post, userName}) => {
     return (  
         <StyledDiv>
             <div>
-                <h3>{post.userId}</h3>
+                <h3>{userName}</h3>
                 <p>{post.date}</p>
             </div>
             <p>{post.postText}</p>

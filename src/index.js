@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Posts } from './contexts/PostsContext';
+import { Users } from './contexts/UsersContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Posts>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Posts>
+    <Users>
+        <Posts>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Posts>
+    </Users>
 );

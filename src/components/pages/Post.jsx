@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PostCard from "../molecules/PostCard";
 import { useContext } from "react";
 import PostsContext from "../../contexts/PostsContext";
+import UsersContext from "../../contexts/UsersContext";
 
 const StyledMain = styled.main`
     min-height: calc(100vh - 100px - 75px - 4rem);
@@ -20,8 +21,8 @@ const StyledMain = styled.main`
 const Post = () => {
 
     const {posts} = useContext(PostsContext);
-
-    console.log(posts)
+    const { users } = useContext(UsersContext);
+    console.log(users)
 
     return (
         <StyledMain>
@@ -32,11 +33,17 @@ const Post = () => {
                     <h1>Our all posts</h1>
                     <div>
                         {
-                            posts.map(post =>
-                                <PostCard 
+                            posts.map(post =>{
+
+                                const userById = users.find(user => user.id === post.userId)
+                                console.log(userById)
+
+                                return <PostCard 
                                     key={post.postId}
                                     post={post}
+                                    userName={userById.userName}
                                 />
+                            }
                                 
                             )
                         }
