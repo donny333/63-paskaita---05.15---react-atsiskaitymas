@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledLoginMain = styled.main`
+const StyledMain = styled.main`
     min-height: calc(100vh - 100px - 75px);
     display: flex;
     justify-content: center;
@@ -49,7 +49,7 @@ const StyledLoginMain = styled.main`
 
 const Login = () => {
     return ( 
-        <StyledLoginMain>
+        <StyledMain>
             <form>
                 <div>
                     <label htmlFor="email">Enter email: </label>
@@ -61,7 +61,7 @@ const Login = () => {
                 </div>
                 <button>Come in!</button>
             </form>
-        </StyledLoginMain>
+        </StyledMain>
      );
 }
  
