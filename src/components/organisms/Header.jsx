@@ -30,7 +30,7 @@ const Header = () => {
                 <li><Link to={'/login'}>Login</Link></li>
                 <li><Link to={'/register'}>Register</Link></li>
                 <li><Link to={'/home'}>Home</Link></li>
-                <li><Link to={'/post'}>Post</Link></li>
+                {/* <li><Link to={'/post'}>Post</Link></li> */}
             </ul>
         </StyledHeader>
      );

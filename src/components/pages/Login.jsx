@@ -1,4 +1,9 @@
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import UsersContext from "../../contexts/UsersContext";
+import * as Yup from 'yup';
+import { useFormik } from 'formik'
+import { useNavigate } from "react-router-dom";
 
 const StyledMain = styled.main`
     min-height: calc(100vh - 100px - 75px);
@@ -31,7 +36,7 @@ const StyledMain = styled.main`
                 border-bottom-right-radius: 0.5rem;
             }
         }
-        > button {
+        > input {
             width: 225px;
             border: 1px solid black;
             border-radius: 0.5rem;
@@ -39,7 +44,7 @@ const StyledMain = styled.main`
             background-color: white;
             font-size: 1.25rem;
         }
-        > button:hover{
+        > input:hover{
             background-color: black;
             color: white;
             cursor: pointer;
@@ -48,18 +53,65 @@ const StyledMain = styled.main`
 `;
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const [failedLogin, setFailedLogin] = useState(false);
+    const {users, currentUser, setCurrentUser} = useContext(UsersContext);
+
+    let values = {
+        email: '',
+        password:''
+    }
+
+    let usersShema = Yup.object({
+        email: Yup.string()
+            .required('Enter your user name.'),
+        password: Yup.string()
+            .required('Enter your password')
+    });
+
+    const formik = useFormik({
+        initialValues:values,
+        validationSchema: usersShema,
+        onSubmit: (values) => {
+            console.log('submitted')
+            const validUser = users.find((user) => 
+                values.email === user.email && values.password === user.password
+            )
+            if(validUser === undefined){
+                setFailedLogin(!failedLogin)
+            } else {
+                setCurrentUser(validUser);
+                navigate('/home')
+            }
+        }
+    });
+
+    console.log(currentUser)
+
     return ( 
         <StyledMain>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <div>
                     <label htmlFor="email">Enter email: </label>
-                    <input type="text" id="email" name="email"/>
+                    <input type="text" 
+                    id="email" name="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />
                 </div>
                 <div>
                     <label htmlFor="password">Enter password: </label>
-                    <input type="password" id="password" name="password" />
+                    <input type="password" 
+                    id="password" name="password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />
                 </div>
-                <button>Come in!</button>
+                <input type="submit" value='Login'/>
             </form>
         </StyledMain>
      );

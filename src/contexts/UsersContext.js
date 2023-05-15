@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useState } from "react";
 import { useReducer } from "react";
 import { createContext } from "react";
 
@@ -22,6 +23,8 @@ const Users = ({ children }) => {
 
     const [users, setUsers] = useReducer(reducer, [])
 
+    const [currentUser, setCurrentUser] = useState(null)
+
     useEffect(()=>{
         fetch('http://localhost:8080/users')
         .then(res => res.json())
@@ -34,7 +37,9 @@ const Users = ({ children }) => {
     return ( 
         <UsersContext.Provider
             value={{
-                users
+                users,
+                currentUser,
+                setCurrentUser
             }}
         >
             { children }
