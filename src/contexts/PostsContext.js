@@ -14,6 +14,14 @@ const reducer = (state, action) =>{
         case postsActionTypes.load:
             return action.data;
         case postsActionTypes.add:
+            // console.log(action.data)
+            fetch("http://localhost:8000/posts", {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(action.data)
+            })
             return [...state, action.data]
         default:
             return state
@@ -25,7 +33,7 @@ const Posts = ({ children }) => {
     const [posts, setPosts] = useReducer(reducer, []);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/posts')
+        fetch('http://localhost:8000/posts')
             .then(res => res.json())
             .then(data => setPosts({
                 type: postsActionTypes.load,
@@ -36,7 +44,9 @@ const Posts = ({ children }) => {
     return ( 
         <PostsContext.Provider
             value={{
-                posts
+                posts,
+                setPosts,
+                postsActionTypes
             }}
         >
             { children }

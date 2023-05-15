@@ -26,7 +26,7 @@ const Users = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null)
 
     useEffect(()=>{
-        fetch('http://localhost:8080/users')
+        fetch('http://localhost:8000/users')
         .then(res => res.json())
         .then(data => setUsers({
             type: usersActionTypes.load,

@@ -19,13 +19,17 @@ const App = () => {
 
     <Routes>
       {
-        currentUser ?
-        <Route path='/' element={<Home />} /> :
-        <Route path='/' element={<Login />} />
+      currentUser ?
+      <Route path='/' element={<Home />} /> :
+      <Route path='/' element={<Login />} />
+      }
+      {
+      currentUser ?
+      <Route path='/add-post' element={<AddPost />} /> :
+      <Route path='/add-post' element={<Login />} />
       }
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/add-post' element={<AddPost />} />
     </Routes>
 
     <Footer />

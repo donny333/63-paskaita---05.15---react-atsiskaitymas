@@ -35,7 +35,7 @@ const Home = () => {
                             posts.map(post =>{
                                 const userById = users.find(user => user.id === post.userId)
                                 return <PostCard 
-                                    key={post.postId}
+                                    key={post.id}
                                     post={post}
                                     userName={userById.userName}
                                 />
