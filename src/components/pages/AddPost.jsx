@@ -80,8 +80,11 @@ const values = {
 
 let postShema = Yup.object({
     postText: Yup.string()
+        .min(10, 'Minimum length of post is 5 characters.')
+        .max(200, "Maximum length of post is 200 characters")
         .required('Enter post text.'),
-    password: Yup.string()
+    tags: Yup.string()
+        .matches(/(?<!,)\s/, "There can't be spaces in tags")
         .required('Enter a tag.')
 });
 
@@ -113,7 +116,7 @@ const AddPost = () => {
                     // onBlur={formik.handleBlur}
                     />
                 </div>
-                <span>*separate Tags by comma</span>
+                <span>*separate Tags by comma. Minimum one tag is required.</span>
                 {
                     // formik.touched.password && formik.errors.password &&
                     // <p>{formik.errors.password}</p>
