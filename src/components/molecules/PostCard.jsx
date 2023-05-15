@@ -46,7 +46,7 @@ const PostCard = ({post, userName}) => {
             <p>{post.postText}</p>
             <div>
                 {
-                    post.tags.map((tag, i) =>{
+                    post.tags.map((tag) =>{
                         return <button key={generateId()}>{tag}</button>
                     })
                 }

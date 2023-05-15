@@ -7,6 +7,7 @@ import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import { Routes, Route } from 'react-router-dom';
 import UsersContext from './contexts/UsersContext';
+import AddPost from './components/pages/AddPost';
 
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
       }
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
+      <Route path='/add-post' element={<AddPost />} />
     </Routes>
 
     <Footer />

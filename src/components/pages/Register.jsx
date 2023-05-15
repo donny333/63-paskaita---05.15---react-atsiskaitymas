@@ -66,6 +66,8 @@ const StyledMain = styled.main`
 `;
 
 
+
+
 const Register = () => {
     return (  
         <StyledMain>
