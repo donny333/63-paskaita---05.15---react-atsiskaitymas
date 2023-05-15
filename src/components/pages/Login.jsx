@@ -49,6 +49,10 @@ const StyledMain = styled.main`
             color: white;
             cursor: pointer;
         }
+        > p {
+            margin: 0;
+            color: red;
+        }
     }
 `;
 
@@ -66,7 +70,7 @@ const Login = () => {
 
     let usersShema = Yup.object({
         email: Yup.string()
-            .required('Enter your user name.'),
+            .required('Enter your user email.'),
         password: Yup.string()
             .required('Enter your password')
     });
@@ -75,7 +79,6 @@ const Login = () => {
         initialValues:values,
         validationSchema: usersShema,
         onSubmit: (values) => {
-            console.log('submitted')
             const validUser = users.find((user) => 
                 values.email === user.email && values.password === user.password
             )
@@ -100,6 +103,10 @@ const Login = () => {
                     onBlur={formik.handleBlur}
                     />
                 </div>
+                {
+                    formik.touched.email && formik.errors.email &&
+                    <p>{formik.errors.email}</p>
+                }
                 <div>
                     <label htmlFor="password">Enter password: </label>
                     <input type="password" 
@@ -109,7 +116,15 @@ const Login = () => {
                     onBlur={formik.handleBlur}
                     />
                 </div>
+                {
+                    formik.touched.password && formik.errors.password &&
+                    <p>{formik.errors.password}</p>
+                }
                 <input type="submit" value='Login'/>
+                {
+                    failedLogin &&
+                    <p styled={{color:'red', margin:0}}>Invalid username or password!</p>
+                }
             </form>
         </StyledMain>
      );

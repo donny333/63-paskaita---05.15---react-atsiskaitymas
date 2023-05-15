@@ -27,7 +27,6 @@ const StyledHeader = styled.header`
 const Header = () => {
 
     const {currentUser} = useContext(UsersContext);
-    console.log(currentUser)
 
     return ( 
         <StyledHeader>
